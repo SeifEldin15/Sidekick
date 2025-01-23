@@ -6,20 +6,20 @@ export default function BlogHome() {
     <main className="container mx-auto px-4 py-8 max-w-[92%]">
       {/* Hero Section */}
       <article className="mb-16 overflow-hidden rounded-lg bg-white shadow-lg md:flex">
-        <div className="flex-1 p-12">
-          <h1 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">Marketing Insights That Drive Success</h1>
-          <p className="mb-10 text-md text-gray-600">
+        <div className="flex-1 p-6 md:p-12">
+          <h1 className="mb-4 md:mb-6 text-3xl md:text-5xl font-bold text-gray-900">Marketing Insights That Drive Success</h1>
+          <p className="mb-6 md:mb-10 text-sm md:text-md text-gray-600">
             Welcome to the Sidekick Creative Company blog! Here, we share actionable strategies, expert tips, and the
             latest trends to help your business excel in key areas
           </p>
           <div className="flex items-center justify-between">
-            <time className="text-gray-500">May 20th 2020</time>
+            <time className="text-sm md:text-base text-gray-500">May 20th 2020</time>
             <Link href="#" className="text-md font-bold text-primary hover:text-primary/90">
               Read more
             </Link>
           </div>
         </div>
-        <div className="relative h-[40rem] flex-1 md:h-auto">
+        <div className="relative h-[20rem] flex-1 md:h-auto">
           <Image
             src="/blog/topblog.png"
             alt="Person working on laptop"
