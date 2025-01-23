@@ -15,7 +15,7 @@ export default function Page() {
 
       {/* Image Grid */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-16">
-        <div className="relative w-full h-[300px] md:h-[250px]">
+        <div className="relative w-full h-[300px] md:h-[250px] z-[-1]">
           <Image
             src="/services/service1.png"
             alt="Green billboard design"

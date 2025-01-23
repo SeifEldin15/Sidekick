@@ -7,7 +7,7 @@ export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <nav className="flex items-center justify-between py-4 max-w-[92%] mx-auto px-4">
+    <nav className="flex items-center justify-between py-4 max-w-[92%] mx-auto px-4 z-[9999]">
       <div className="flex-shrink-0">
         <Image
           src="/logo.png"
