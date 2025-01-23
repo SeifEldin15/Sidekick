@@ -1,8 +1,12 @@
+"use client"
 import Image from "next/image"
 import Link from "next/link"
-
+import Nav from "@/components/Nav"
+import Contact from "@/components/Contact"
 export default function BlogHome() {
   return (
+    <>
+    <Nav />
     <main className="container mx-auto px-4 py-8 max-w-[92%]">
       {/* Hero Section */}
       <article className="mb-16 overflow-hidden rounded-lg bg-white shadow-lg md:flex">
@@ -87,6 +91,8 @@ export default function BlogHome() {
         </div>
       </article>
     </main>
+    <Contact />
+    </>
   )
 }
 
