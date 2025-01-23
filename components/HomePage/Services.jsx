@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react"
 
 export default function Services() {
   return (
-    <section className="py-16   max-w-[1400px] mx-auto">
+    <section className="py-16   max-w-[92%] mx-auto">
 
 
       <div className="flex flex-col md:flex-row gap-6">

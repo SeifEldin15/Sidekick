@@ -5,7 +5,7 @@ export default function Newsletter() {
   return (
     <>
       {/* Newsletter Section */}
-      <section className="bg-[#1B3B5A] text-white py-16 rounded-3xl max-w-[1400px] mx-auto">
+      <section className="bg-[#1B3B5A] text-white py-16 rounded-3xl max-w-[92%] mx-auto">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-5xl font-bold mb-6">
             Join Our <span className="text-orange-500">Newsletter</span>
