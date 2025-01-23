@@ -2,9 +2,13 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
+import { usePathname } from 'next/navigation'
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const pathname = usePathname()
+
+  const isActive = (path) => pathname === path
 
   return (
     <nav className="flex items-center justify-between py-4 max-w-[92%] mx-auto px-4 z-[9999]">
@@ -29,19 +33,19 @@ export default function Nav() {
 
       <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:hidden absolute top-16 left-0 right-0 bg-white flex-col items-center py-4 shadow-lg`}>
         <div className="flex flex-col items-center gap-4 w-full px-4">
-          <Link href="/" className="w-full text-center px-4 py-2 rounded-full text-orange-500 border border-orange-500 font-medium">
+          <Link href="/" className={`w-full text-center px-4 py-2 rounded-full ${isActive('/') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}>
             Home
           </Link>
-          <Link href="/services" className="w-full text-center px-4 py-2 rounded-full text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500">
+          <Link href="/services" className={`w-full text-center px-4 py-2 rounded-full ${isActive('/services') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}>
             Services
           </Link>
-          <Link href="/blog" className="w-full text-center px-4 py-2 rounded-full text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500">
+          <Link href="/blog" className={`w-full text-center px-4 py-2 rounded-full ${isActive('/blog') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}>
             Blog
           </Link>
-          <Link href="/store" className="w-full text-center px-4 py-2 rounded-full text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500">
-            Store
+          <Link href="/community" className={`w-full text-center px-4 py-2 rounded-full ${isActive('/community') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}>
+            Community
           </Link>
-          <Link href="/faqs" className="w-full text-center px-4 py-2 rounded-full text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500">
+          <Link href="/faqs" className={`w-full text-center px-4 py-2 rounded-full ${isActive('/faqs') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}>
             FAQs
           </Link>
           <div className="w-full flex flex-col gap-4">
@@ -57,31 +61,31 @@ export default function Nav() {
         <div className="flex items-center gap-6">
           <Link 
             href="/" 
-            className="px-4 py-1 rounded-full text-orange-500 border border-orange-500 font-medium "
+            className={`px-4 py-1 rounded-full ${isActive('/') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}
           >
             Home
           </Link>
           <Link 
             href="/services" 
-            className="px-4 py-1 rounded-full text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500 hover:"
+            className={`px-4 py-1 rounded-full ${isActive('/services') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}
           >
             Services
           </Link>
           <Link 
             href="/blog" 
-            className="px-4 py-1 rounded-full text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500 hover:"
+            className={`px-4 py-1 rounded-full ${isActive('/blog') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}
           >
             Blog
           </Link>
           <Link 
-            href="/store" 
-            className="px-4 py-1 rounded-full text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500 hover:"
+            href="/community" 
+            className={`px-4 py-1 rounded-full ${isActive('/community') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}
           >
-            Store
+            Community
           </Link>
           <Link 
             href="/faqs" 
-            className="px-4 py-1 rounded-full text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500 hover:"
+            className={`px-4 py-1 rounded-full ${isActive('/faqs') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}
           >
             FAQs
           </Link>
