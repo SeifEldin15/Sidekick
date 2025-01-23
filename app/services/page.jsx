@@ -6,8 +6,10 @@ import Contact from "@/components/Contact"
 export default function Page() {
   return (
     <>
-    <Nav />
-    <main className="container mx-auto px-4 py-12 max-w-7xl">
+    <div className="pt-[72px]">
+        <Nav />
+    </div>
+    <main className="container mx-auto px-4 py-12 max-w-[92%]">
       {/* Hero Section */}
       <h1 className="text-4xl font-bold text-slate-900 mb-8 max-w-2xl">
         We Drive Strategy, Design Brands, Tell Stories And More

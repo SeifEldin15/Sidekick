@@ -6,7 +6,9 @@ import Contact from "@/components/Contact"
 export default function BlogHome() {
   return (
     <>
-    <Nav />
+    <div className="pt-[72px]">
+        <Nav />
+    </div>
     <main className="container mx-auto px-4 py-8 max-w-[92%]">
       {/* Hero Section */}
       <article className="mb-16 overflow-hidden rounded-lg bg-white shadow-lg md:flex">
@@ -23,7 +25,7 @@ export default function BlogHome() {
             </Link>
           </div>
         </div>
-        <div className="relative h-[20rem] flex-1 md:h-auto">
+        <div className="relative h-[20rem] flex-1 md:h-auto z-[1]">
           <Image
             src="/blog/topblog.png"
             alt="Person working on laptop"

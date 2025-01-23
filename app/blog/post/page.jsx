@@ -1,10 +1,16 @@
+"use client"
 import Image from "next/image"
-
+import Nav from "@/components/Nav"
+import Contact from "@/components/Contact"
 export default function BlogPost({ params }) {
   return (
+    <>
+    <div className="pt-[72px]">
+        <Nav />
+    </div>
     <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Hero Image */}
-      <div className="relative w-[115%] h-[350px] mb-8 mt-12 left-[50%] -translate-x-1/2">
+      <div className="relative w-[115%] h-[350px] mb-8 mt-12 left-[50%] -translate-x-1/2 z-[1]">
         <Image
           src="/blog/topblog.png"
           alt="Person working on laptop"
@@ -69,5 +75,7 @@ export default function BlogPost({ params }) {
         </section>
       </div>
     </article>
+    <Contact />
+    </>
   )
 }
