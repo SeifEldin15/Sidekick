@@ -18,7 +18,7 @@ export default function BlogHome() {
           </p>
           <div className="flex items-center justify-between">
             <time className="text-sm md:text-base text-gray-500">May 20th 2020</time>
-            <Link href="#" className="text-md font-bold text-primary hover:text-primary/90">
+            <Link href="/blog/post" className="text-md font-bold text-primary hover:text-primary/90">
               Read more
             </Link>
           </div>
@@ -41,27 +41,29 @@ export default function BlogHome() {
           { id: 3, image: "/blog/blog3.png" }
         ].map(({ id, image }) => (
           <article key={id} className="overflow-hidden rounded-lg bg-white shadow-lg">
-            <div className="relative h-48">
-              <Image
-                src={image}
-                alt="Laptop workspace"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="p-6">
-              <h2 className="mb-3 text-xl font-bold text-gray-900">long established</h2>
-              <p className="mb-4 text-gray-600">
-                It is a long established fact that a reader will be distracted by the readable content of a page when
-                looking at its layout. The point of using Lorem Ipsum is that....
-              </p>
-              <div className="flex items-center justify-between">
-                <time className="text-sm text-gray-500">May 20th 2020</time>
-                <Link href="#" className="text-sm font-medium text-primary hover:text-primary/90">
-                  Read more
-                </Link>
+            <Link href={`/blog/post/${id}`} className="block">
+              <div className="relative h-48">
+                <Image
+                  src={image}
+                  alt="Laptop workspace"
+                  fill
+                  className="object-cover"
+                />
               </div>
-            </div>
+              <div className="p-6">
+                <h2 className="mb-3 text-xl font-bold text-gray-900">long established</h2>
+                <p className="mb-4 text-gray-600">
+                  It is a long established fact that a reader will be distracted by the readable content of a page when
+                  looking at its layout. The point of using Lorem Ipsum is that....
+                </p>
+                <div className="flex items-center justify-between">
+                  <time className="text-sm text-gray-500">May 20th 2020</time>
+                  <span className="text-sm font-medium text-primary hover:text-primary/90">
+                    Read more
+                  </span>
+                </div>
+              </div>
+            </Link>
           </article>
         ))}
       </div>
@@ -76,7 +78,7 @@ export default function BlogHome() {
           </p>
           <div className="flex items-center justify-between">
             <time className="text-base md:text-lg text-gray-500">May 20</time>
-            <Link href="#" className="text-base md:text-lg font-bold text-gray-900 hover:text-gray-700">
+            <Link href="/blog/post" className="text-base md:text-lg font-bold text-gray-900 hover:text-gray-700">
               Read more
             </Link>
           </div>

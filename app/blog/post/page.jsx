@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-export default function BlogPost() {
+export default function BlogPost({ params }) {
   return (
     <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Hero Image */}
@@ -17,12 +17,12 @@ export default function BlogPost() {
       {/* Article Header */}
       <header className="mb-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Finibus Bonorum et Malorum
+          Blog Post {params.id} - Finibus Bonorum et Malorum
         </h1>
         <div className="flex items-center text-gray-600 text-sm">
           <span className="font-bold">Written by John doe</span>
           <span className="mx-2">•</span>
-          <time>Monday May 20</time>
+          <time dateTime="2024-05-20">May 20, 2024</time>
         </div>
       </header>
 
