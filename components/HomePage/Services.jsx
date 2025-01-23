@@ -4,8 +4,16 @@ import { ArrowRight } from "lucide-react"
 
 export default function Services() {
   return (
-    <section className="py-16   max-w-[92%] mx-auto">
-
+    <section className="py-16 max-w-[92%] mx-auto">
+      {/* Move text section outside the flex container and show it first on mobile */}
+      <div className="text-gray-600 mb-8 flex flex-col items-center max-w-lg mx-auto md:hidden">
+        <h3 className="font-semibold mb-2 text-7xl text-orange-500">Services We Provide</h3>
+        <p>
+          Sidekick Creative Company empowers businesses with affordable,
+          innovative marketing solutions. We prioritize creativity, client
+          focus, and growth in a dynamic digital world.
+        </p>
+      </div>
 
       <div className="flex flex-col md:flex-row gap-6">
         {/* Left Column - 4 boxes */}
@@ -51,9 +59,10 @@ export default function Services() {
           </div>
         </div>
 
-        {/* Right Column - 2 boxes */}
-        <div className="md:w-1/2 ">
-          <div className="text-gray-600 mb-8 flex flex-col items-center max-w-lg ml-10">
+        {/* Right Column - text and 2 boxes */}
+        <div className="md:w-1/2">
+          {/* Text section visible only on medium screens and up */}
+          <div className="text-gray-600 mb-8 flex-col items-center max-w-lg ml-10 hidden md:flex">
             <h3 className="font-semibold mb-2 text-7xl text-orange-500">Services We Provide</h3>
             <p>
               Sidekick Creative Company empowers businesses with affordable,
