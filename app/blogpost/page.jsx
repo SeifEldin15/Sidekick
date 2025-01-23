@@ -4,12 +4,12 @@ export default function BlogPost() {
   return (
     <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Hero Image */}
-      <div className="relative w-full h-[350px] mb-8 mt-12">
+      <div className="relative w-[115%] h-[350px] mb-8 mt-12 left-[50%] -translate-x-1/2">
         <Image
           src="/blog/topblog.png"
           alt="Person working on laptop"
           fill
-          className="object-cover rounded-lg"
+          className="object-cover"
           priority
         />
       </div>
