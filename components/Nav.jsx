@@ -11,7 +11,7 @@ export default function Nav() {
   const isActive = (path) => pathname === path
 
   return (
-    <nav className="flex items-center justify-between py-4 max-w-[92%] mx-auto px-4 z-[9999]">
+    <nav className="flex items-center justify-between py-4 max-w-[92%] mx-auto px-4 z-[9999] fixed top-0 left-0 right-0 bg-white">
       <div className="flex-shrink-0">
         <Link href="/">
           <Image
