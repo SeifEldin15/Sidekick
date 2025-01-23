@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 
 export default function Contact() {
   return (
-    <footer className="bg-black text-white px-12 py-16 rounded-t-3xl max-w-[92%] mx-auto mt-12">
+    <footer className="bg-black text-white px-12 py-16 rounded-t-3xl max-w-[96%] md:max-w-[92%] mx-auto mt-12">
       <div className="container mx-auto px-4">
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 border-b border-white pb-8">
