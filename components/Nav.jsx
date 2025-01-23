@@ -13,13 +13,15 @@ export default function Nav() {
   return (
     <nav className="flex items-center justify-between py-4 max-w-[92%] mx-auto px-4 z-[9999]">
       <div className="flex-shrink-0">
-        <Image
-          src="/logo.png"
-          alt="Sidekick Logo"
-          width={140}
-          height={30}
-          className="object-contain"
-        />
+        <Link href="/">
+          <Image
+            src="/logo.png"
+            alt="Sidekick Logo"
+            width={140}
+            height={30}
+            className="object-contain"
+          />
+        </Link>
       </div>
 
       <button
