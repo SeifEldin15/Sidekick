@@ -44,7 +44,7 @@ export default function Nav() {
           <Link href="/blog" className={`w-full text-center px-4 py-2 rounded-full ${isActive('/blog') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}>
             Blog
           </Link>
-          <Link href="/community" className={`w-full text-center px-4 py-2 rounded-full ${isActive('/community') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}>
+          <Link href="https://www.skool.com/startuplabs" className={`w-full text-center px-4 py-2 rounded-full ${isActive('/community') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}>
             Community
           </Link>
           <Link href="/faqs" className={`w-full text-center px-4 py-2 rounded-full ${isActive('/faqs') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}>
@@ -80,7 +80,7 @@ export default function Nav() {
             Blog
           </Link>
           <Link 
-            href="/community" 
+            href="https://www.skool.com/startuplabs" 
             className={`px-4 py-1 rounded-full ${isActive('/community') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}
           >
             Community
