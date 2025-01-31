@@ -3,10 +3,12 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import { usePathname } from 'next/navigation'
+import { useSession, signOut } from "next-auth/react"
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
+  const { data: session } = useSession()
 
   const isActive = (path) => pathname === path
 
@@ -51,10 +53,28 @@ export default function Nav() {
             FAQs
           </Link>
           <div className="w-full flex flex-col gap-4">
-            <Link href="/login" className="w-full text-center px-4 py-2 rounded-full text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500">
-              Login
-            </Link>
-            <Button className="w-full bg-orange-500 hover:bg-orange-600 rounded-full px-6 py-2">Sign up free</Button>
+            {session ? (
+              <>
+                <span className="w-full text-center text-gray-600">
+                  Welcome, {session.user.name}
+                </span>
+                <Button 
+                  onClick={() => signOut()} 
+                  className="w-full bg-orange-500 hover:bg-orange-600 rounded-full px-6 py-2"
+                >
+                  Sign out
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link href="/login" className="w-full text-center px-4 py-2 rounded-full text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500">
+                  Login
+                </Link>
+                <Button className="w-full bg-orange-500 hover:bg-orange-600 rounded-full px-6 py-2">
+                  Sign up free
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -95,10 +115,26 @@ export default function Nav() {
       </div>
 
       <div className="hidden md:flex items-center gap-4 flex-shrink-0">
-        <Link href="/login" className="text-gray-600">
-          Login
-        </Link>
-        <Button className="bg-orange-500 hover:bg-orange-600 rounded-full px-6 py-2">Sign up free</Button>
+        {session ? (
+          <div className="flex items-center gap-4">
+            <span className="text-gray-600">Welcome, {session.user.name}</span>
+            <Button 
+              onClick={() => signOut()} 
+              className="bg-orange-500 hover:bg-orange-600 rounded-full px-6 py-2"
+            >
+              Sign out
+            </Button>
+          </div>
+        ) : (
+          <>
+            <Link href="/login" className="text-gray-600">
+              Login
+            </Link>
+            <Button className="bg-orange-500 hover:bg-orange-600 rounded-full px-6 py-2">
+              Sign up free
+            </Button>
+          </>
+        )}
       </div>
     </nav> 
   )
