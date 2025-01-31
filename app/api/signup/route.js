@@ -1,40 +1,42 @@
-import { NextResponse } from 'next/server'
-import bcrypt from 'bcryptjs'
+import { hash } from 'bcryptjs'
 import clientPromise from '@/lib/mongodb'
 
-export async function POST(req) {
+export async function POST(request) {
   try {
-    const { email, password, name } = await req.json()
+    const { email, password } = await request.json()
     
+    // Connect to database
     const client = await clientPromise
-    const users = client.db().collection('users')
+    const db = client.db('sidekick')
     
-    // Check if user already exists
-    const existingUser = await users.findOne({ email })
+    // Check if user exists
+    const existingUser = await db.collection('users').findOne({ email })
     if (existingUser) {
-      return NextResponse.json(
+      return Response.json(
         { error: 'User already exists' },
         { status: 400 }
       )
     }
-    
+
     // Hash password
-    const hashedPassword = await bcrypt.hash(password, 12)
+    const hashedPassword = await hash(password, 12)
     
     // Create user
-    await users.insertOne({
+    const result = await db.collection('users').insertOne({
       email,
-      name,
       password: hashedPassword,
-      createdAt: new Date(),
+      createdAt: new Date()
     })
-    
-    return NextResponse.json({ message: 'User created successfully' })
+
+    return Response.json(
+      { message: 'User created successfully' },
+      { status: 201 }
+    )
   } catch (error) {
-    console.error('Signup error:', error);
-    return NextResponse.json(
-      { error: error.message || 'Something went wrong' },
-      { status: error.status || 500 }
+    console.error('Signup error:', error)
+    return Response.json(
+      { error: 'Internal server error' },
+      { status: 500 }
     )
   }
 }
