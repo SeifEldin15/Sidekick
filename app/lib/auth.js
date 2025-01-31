@@ -23,7 +23,11 @@ const handler = NextAuth({
         const passwordMatch = await bcrypt.compare(credentials?.password || '', user.password)
         if (!passwordMatch) throw new Error('Invalid password')
         
-        return { id: user._id.toString(), email: user.email }
+        return { 
+          id: user._id.toString(), 
+          email: user.email,
+          name: user.name 
+        }
       }
     })
   ],

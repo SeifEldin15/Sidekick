@@ -4,7 +4,7 @@ import clientPromise from '@/lib/mongodb'
 
 export async function POST(req) {
   try {
-    const { email, password } = await req.json()
+    const { email, password, name } = await req.json()
     
     const client = await clientPromise
     const users = client.db().collection('users')
@@ -24,6 +24,7 @@ export async function POST(req) {
     // Create user
     await users.insertOne({
       email,
+      name,
       password: hashedPassword,
       createdAt: new Date(),
     })

@@ -9,6 +9,7 @@ export default function SignupPage() {
   const router = useRouter()
   const [error, setError] = useState('')
   const [formData, setFormData] = useState({
+    name: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -65,6 +66,22 @@ export default function SignupPage() {
             <div className="text-red-500 text-sm text-center">{error}</div>
           )}
           <div className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                Full Name
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                className="mt-1 block w-full rounded-full px-4 py-2 border border-gray-300 focus:border-orange-500 focus:ring-orange-500 focus:outline-none"
+                placeholder="Enter your full name"
+                value={formData.name}
+                onChange={(e) => setFormData({...formData, name: e.target.value})}
+              />
+            </div>
+
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email address
