@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <>
       {/* Hero Section */}
-      <section className="py-8 md:py-16 px-4 max-w-[92%] mx-auto grid md:grid-cols-2 gap-8 items-center place-items-center">
+      <section className="py-8 md:py-16 px-4 max-w-[92%] mx-auto grid md:grid-cols-2 gap-8 items-center place-items-center mt-10">
         <div className="text-center md:text-left">
           <p className="text-orange-500 text-sm font-medium mb-4">Best Creative Company</p>
           <h1 className="text-4xl md:text-[5.2rem] leading-[1.2] font-bold text-[#002B3D] mb-6">
