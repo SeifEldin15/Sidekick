@@ -1,6 +1,13 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const FAQ = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2
+  });
+
   const faqData = [
     {
       question: "How do I upgrade / downgrade my workplace plan?",
@@ -44,11 +51,22 @@ const FAQ = () => {
 
   return (
     <div className="max-w-[90%] w-full mx-auto px-4 py-12">
-      <h1 className="text-center text-5xl font-bold mb-8">Frequently Asked <span className="text-orange-500">Questions</span></h1>
+      <motion.h1 
+        ref={ref}
+        initial={{ y: 100, opacity: 0 }}
+        animate={inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-center text-5xl font-bold mb-8"
+      >
+        Frequently Asked <span className="text-orange-500">Questions</span>
+      </motion.h1>
       <div className="space-y-2">
         {faqData.map((faq, index) => (
-          <div 
-            key={index} 
+          <motion.div 
+            key={index}
+            initial={{ y: 100, opacity: 0 }}
+            animate={inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 + (index * 0.1) }}
             className="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 w-full shadow rounded-sm"
           >
             <button
@@ -65,7 +83,7 @@ const FAQ = () => {
                 <p className="text-gray-600">{faq.answer}</p>
               </div>
             )}
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

@@ -1,8 +1,15 @@
 import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
+import { useInView } from "react-intersection-observer"
 
 export default function Contact() {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2
+  })
+
   return (
     <footer className="bg-black text-white px-12 py-16 rounded-t-3xl max-w-[96%] md:max-w-[92%] mx-auto mt-12">
       <div className="container mx-auto px-4">
@@ -10,7 +17,13 @@ export default function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 border-b border-white pb-8">
           {/* Email Input Section */}
           <div>
-            <div className="relative max-w-md">
+            <motion.div 
+              ref={ref}
+              initial={{ y: 100, opacity: 0 }}
+              animate={inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
+              transition={{ duration: 0.8 }}
+              className="relative max-w-md"
+            >
               <Input
                 type="email"
                 placeholder="Enter Your Email"
@@ -31,18 +44,30 @@ export default function Contact() {
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </Button>
-            </div>
+            </motion.div>
           </div>
           {/* Let's Talk Section */}
           <div className="text-right">
-            <h2 className="text-5xl font-light">Lets Talk</h2>
+            <motion.h2 
+              initial={{ y: 100, opacity: 0 }}
+              animate={inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-5xl font-light"
+            >
+              Lets Talk
+            </motion.h2>
           </div>
         </div>
 
         {/* Bottom Section */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="md:col-span-1">
+          <motion.div 
+            initial={{ y: 100, opacity: 0 }}
+            animate={inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="md:col-span-1"
+          >
             <img
               src="/logo2.png"
               alt="Sidekick Creative Company"
@@ -76,10 +101,15 @@ export default function Contact() {
                 </svg>
               </Link>
             </div>
-          </div>
+          </motion.div>
 
           {/* Navigation Links */}
-          <div className="mt-4">
+          <motion.div 
+            initial={{ y: 100, opacity: 0 }}
+            animate={inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-4"
+          >
             <h3 className="text-lg font-semibold mb-4">Navigation</h3>
             <ul className="space-y-2">
               <li><Link href="#" className="text-gray-400 hover:text-white">Service</Link></li>
@@ -88,20 +118,30 @@ export default function Contact() {
               <li><Link href="#" className="text-gray-400 hover:text-white">Resource</Link></li>
               <li><Link href="#" className="text-gray-400 hover:text-white">Contact</Link></li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* License Links */}
-          <div className="mt-4">
+          <motion.div 
+            initial={{ y: 100, opacity: 0 }}
+            animate={inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-4"
+          >
             <h3 className="text-lg font-semibold mb-4">Licence</h3>
             <ul className="space-y-2">
               <li><Link href="#" className="text-gray-400 hover:text-white">Privacy Policy</Link></li>
               <li><Link href="#" className="text-gray-400 hover:text-white">Copyright</Link></li>
               <li><Link href="#" className="text-gray-400 hover:text-white">Email Address</Link></li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact Info */}
-          <div className="mt-4">
+          <motion.div 
+            initial={{ y: 100, opacity: 0 }}
+            animate={inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mt-4"
+          >
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <ul className="space-y-2">
               <li className="flex items-center gap-2 text-gray-400">
@@ -124,7 +164,7 @@ export default function Contact() {
                 2972 Westheimer Rd. Santa Ana, Illinois 85486
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
       </div>
     </footer>
