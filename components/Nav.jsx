@@ -12,6 +12,23 @@ export default function Nav() {
 
   const isActive = (path) => pathname === path
 
+  const handleFAQClick = (e) => {
+    if (pathname === '/') {
+      e.preventDefault()
+      setTimeout(() => {
+        const faqSection = document.getElementById('faq')
+        if (faqSection) {
+          const navHeight = 80 // Approximate navbar height
+          const faqPosition = faqSection.getBoundingClientRect().top + window.pageYOffset - navHeight
+          window.scrollTo({
+            top: faqPosition,
+            behavior: 'smooth'
+          })
+        }
+      }, 100)
+    }
+  }
+
   return (
     <nav className="flex items-center justify-between py-4 max-w-[92%] mx-auto px-4 z-[9999] fixed top-0 left-0 right-0 bg-white">
       <div className="flex-shrink-0">
@@ -49,7 +66,11 @@ export default function Nav() {
           <Link href="https://www.skool.com/startuplabs" className={`w-full text-center px-4 py-2 rounded-full ${isActive('/community') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}>
             Community
           </Link>
-          <Link href="/faqs" className={`w-full text-center px-4 py-2 rounded-full ${isActive('/faqs') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}>
+          <Link 
+            href="/#faq" 
+            onClick={handleFAQClick}
+            className={`w-full text-center px-4 py-2 rounded-full text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500`}
+          >
             FAQs
           </Link>
           <div className="w-full flex flex-col gap-4">
@@ -106,8 +127,9 @@ export default function Nav() {
             Community
           </Link>
           <Link 
-            href="/faqs" 
-            className={`px-4 py-1 rounded-full ${isActive('/faqs') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}
+            href="/#faq"
+            onClick={handleFAQClick}
+            className={`px-4 py-1 rounded-full text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500`}
           >
             FAQs
           </Link>
