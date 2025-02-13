@@ -30,7 +30,7 @@ export default function Nav() {
   }
 
   return (
-    <nav className="flex items-center justify-between py-4 max-w-[92%] mx-auto px-4 z-[9999] fixed top-0 left-0 right-0 bg-white">
+    <nav className="flex items-center justify-between py-4 max-w-[100%] mx-auto  z-[9999] fixed top-0 left-0 right-0 bg-white px-[5%]">
       <div className="flex-shrink-0">
         <Link href="/">
           <Image

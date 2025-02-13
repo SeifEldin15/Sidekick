@@ -1,15 +1,28 @@
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
+import { useInView } from "react-intersection-observer"
 
 export default function Newsletter() {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2
+  })
+
   return (
     <>
       {/* Newsletter Section */}
       <section className="bg-[#1B3B5A] text-white py-12 sm:py-16 lg:py-20 rounded-3xl  mx-auto px-4 sm:px-6 lg:px-8 max-w-[95%] w-full">
         <div className="max-w-[90rem] mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 lg:mb-8">
+          <motion.h2
+            ref={ref}
+            initial={{ y: 100, opacity: 0 }}
+            animate={inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 lg:mb-8"
+          >
             Join Our <span className="text-orange-500">Newsletter</span>
-          </h2>
+          </motion.h2>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 lg:gap-4 max-w-xl lg:max-w-3xl xl:max-w-4xl mx-auto">
             <Input
               type="email"

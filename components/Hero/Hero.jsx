@@ -1,13 +1,19 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowUpRight } from "lucide-react"
+import { motion } from "framer-motion"
 
 export default function Hero() {
   return (
     <>
       {/* Hero Section */}
       <section className="py-8 md:py-16 px-4 max-w-[92%] mx-auto grid md:grid-cols-2 gap-8 items-center place-items-center mt-10">
-        <div className="text-center md:text-left">
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="text-center md:text-left"
+        >
           <p className="text-orange-500 text-sm font-medium mb-4">Best Creative Company</p>
           <h1 className="text-4xl md:text-[5.2rem] leading-[1.2] font-bold text-[#002B3D] mb-6">
             We Take Care Of<br />
@@ -20,14 +26,20 @@ export default function Hero() {
             Book Your Meeting
             <ArrowUpRight className="w-5 h-5" />
           </Button>
-        </div>
-        <Image
-          src="/image 2.png"
-          alt="Hero Illustration"
-          width={600}
-          height={500}
-          className="object-contain w-full max-w-[400px] md:max-w-[600px]"
-        />
+        </motion.div>
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <Image
+            src="/image 2.png"
+            alt="Hero Illustration"
+            width={600}
+            height={500}
+            className="object-contain w-full max-w-[400px] md:max-w-[600px]"
+          />
+        </motion.div>
       </section>
     </>
   )
