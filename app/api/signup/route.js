@@ -3,8 +3,17 @@ import clientPromise from '@/lib/mongodb'
 
 export async function POST(request) {
   try {
-    const { email, password } = await request.json()
+    const { email, password, name } = await request.json()
     
+    // Validate input
+    const validationError = validateInput(email, password, name)
+    if (validationError) {
+      return Response.json(
+        { error: validationError },
+        { status: 400 }
+      )
+    }
+
     // Connect to database
     const client = await clientPromise
     const db = client.db('sidekick')
@@ -24,6 +33,7 @@ export async function POST(request) {
     // Create user
     const result = await db.collection('users').insertOne({
       email,
+      name,
       password: hashedPassword,
       createdAt: new Date()
     })
@@ -41,9 +51,9 @@ export async function POST(request) {
   }
 }
 
-const validateInput = (email, password) => {
-  if (!email || !password) {
-    return 'Email and password are required'
+const validateInput = (email, password, name) => {
+  if (!email || !password || !name) {
+    return 'Email, password and name are required'
   }
   
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -53,6 +63,10 @@ const validateInput = (email, password) => {
   
   if (password.length < 8) {
     return 'Password must be at least 8 characters'
+  }
+
+  if (name.length < 2) {
+    return 'Name must be at least 2 characters'
   }
   
   return null
