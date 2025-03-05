@@ -35,13 +35,13 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4">
-      <div className="w-full max-w-md space-y-8">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-gray-50">
+      <div className="w-full max-w-md space-y-8 bg-white p-8 rounded-2xl shadow-lg">
         <div className="text-center">
-          <h1 className="text-3xl font-bold">Welcome back</h1>
-          <p className="mt-2 text-gray-600">
+          <h1 className="text-4xl font-bold text-gray-900">Welcome back</h1>
+          <p className="mt-3 text-gray-600">
             Don't have an account?{' '}
-            <Link href="/signup" className="text-orange-500 hover:text-orange-600">
+            <Link href="/signup" className="text-orange-500 hover:text-orange-600 font-medium">
               Sign up free
             </Link>
           </p>
@@ -49,9 +49,12 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           {error && (
-            <div className="text-red-500 text-sm text-center">{error}</div>
+            <div className="bg-red-50 text-red-500 text-sm text-center p-3 rounded-lg">
+              {error}
+            </div>
           )}
-          <div className="space-y-4">
+          
+          <div className="space-y-5">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email address
@@ -61,7 +64,7 @@ export default function LoginPage() {
                 name="email"
                 type="email"
                 required
-                className="mt-1 block w-full rounded-full px-4 py-2 border border-gray-300 focus:border-orange-500 focus:ring-orange-500 focus:outline-none"
+                className="mt-2 block w-full rounded-xl px-4 py-3 border border-gray-300 focus:border-orange-500 focus:ring-orange-500 focus:outline-none transition-colors duration-200"
                 placeholder="Enter your email"
                 value={formData.email}
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
@@ -77,7 +80,7 @@ export default function LoginPage() {
                 name="password"
                 type="password"
                 required
-                className="mt-1 block w-full rounded-full px-4 py-2 border border-gray-300 focus:border-orange-500 focus:ring-orange-500 focus:outline-none"
+                className="mt-2 block w-full rounded-xl px-4 py-3 border border-gray-300 focus:border-orange-500 focus:ring-orange-500 focus:outline-none transition-colors duration-200"
                 placeholder="Enter your password"
                 value={formData.password}
                 onChange={(e) => setFormData({...formData, password: e.target.value})}
@@ -108,7 +111,7 @@ export default function LoginPage() {
 
           <Button 
             type="submit"
-            className="w-full bg-orange-500 hover:bg-orange-600 rounded-full px-6 py-2"
+            className="w-full bg-orange-500 hover:bg-orange-600 rounded-xl px-6 py-3 text-white font-medium shadow-sm hover:shadow-md transition-all duration-200"
           >
             Sign in
           </Button>
