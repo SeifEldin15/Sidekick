@@ -30,10 +30,20 @@ export default function AdminBlog() {
 
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this post?')) {
-      await fetch(`/api/posts/${id}`, {
-        method: 'DELETE',
-      });
-      fetchPosts();
+      try {
+        const response = await fetch(`/api/posts/${id}`, {
+          method: 'DELETE',
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to delete post');
+        }
+        
+        fetchPosts(); // Refresh the posts list
+      } catch (error) {
+        console.error('Error deleting post:', error);
+        alert('Failed to delete post');
+      }
     }
   };
 
