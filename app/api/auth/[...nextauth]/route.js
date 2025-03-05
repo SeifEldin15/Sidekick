@@ -23,7 +23,7 @@ const handler = NextAuth({
         const passwordMatch = await bcrypt.compare(credentials?.password || '', user.password)
         if (!passwordMatch) throw new Error('Invalid password')
         
-        return { id: user._id.toString(), email: user.email }
+        return { id: user._id.toString(), email: user.email, name: user.name }
       }
     })
   ],
@@ -34,12 +34,14 @@ const handler = NextAuth({
     async session({ session, token }) {
       if (session?.user) {
         session.user.id = token.sub
+        session.user.name = token.name
       }
       return session
     },
     async jwt({ token, user }) {
       if (user) {
         token.sub = user.id
+        token.name = user.name
       }
       return token
     }
