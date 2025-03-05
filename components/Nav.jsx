@@ -31,7 +31,7 @@ export default function Nav() {
 
   return (
     <nav className="flex items-center justify-between py-4 max-w-[100%] mx-auto  z-[9999] fixed top-0 left-0 right-0 bg-white px-[5%]">
-      <div className="flex-shrink-0">
+      <div className="flex-shrink-0 w-[200px]">
         <Link href="/">
           <Image
             src="/logo.png"
@@ -91,52 +91,62 @@ export default function Nav() {
                 <Link href="/login" className="w-full text-center px-4 py-2 rounded-full text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500">
                   Login
                 </Link>
-                <Button className="w-full bg-orange-500 hover:bg-orange-600 rounded-full px-6 py-2">
-                  Sign up free
-                </Button>
+                <Link href="/signup">
+                  <Button className="w-full bg-orange-500 hover:bg-orange-600 rounded-full px-6 py-2">
+                    Sign up free
+                  </Button>
+                </Link>
               </>
             )}
           </div>
         </div>
       </div>
 
-      <div className="hidden md:flex items-center justify-center mx-auto max-w-xl bg-gray-100 rounded-full px-4 py-2">
-        <div className="flex items-center gap-6">
-          <Link 
-            href="/" 
-            className={`px-4 py-1 rounded-full ${isActive('/') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}
-          >
-            Home
-          </Link>
-          <Link 
-            href="/services" 
-            className={`px-4 py-1 rounded-full ${isActive('/services') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}
-          >
-            Services
-          </Link>
-          <Link 
-            href="/blog" 
-            className={`px-4 py-1 rounded-full ${isActive('/blog') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}
-          >
-            Blog
-          </Link>
-          <Link 
-            href="https://www.skool.com/startuplabs" 
-            className={`px-4 py-1 rounded-full ${isActive('/community') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}
-          >
-            Community
-          </Link>
-          <Link 
-            href="/#faq"
-            onClick={handleFAQClick}
-            className={`px-4 py-1 rounded-full text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500`}
-          >
-            FAQs
-          </Link>
+      <div className="hidden md:flex items-center justify-center flex-1 mx-auto">
+        <div className="bg-gray-100 rounded-full px-4 py-2">
+          <div className="flex items-center gap-6">
+            <Link 
+              href="/" 
+              className={`px-4 py-1 rounded-full ${isActive('/') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}
+            >
+              Home
+            </Link>
+            <Link 
+              href="/services" 
+              className={`px-4 py-1 rounded-full ${isActive('/services') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}
+            >
+              Services
+            </Link>
+            <Link 
+              href="/blog" 
+              className={`px-4 py-1 rounded-full ${isActive('/blog') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}
+            >
+              Blog
+            </Link>
+            <Link 
+              href="/case-study" 
+              className={`px-4 py-1 rounded-full ${isActive('/case-study') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}
+            >
+              Case Study
+            </Link>
+            <Link 
+              href="https://www.skool.com/startuplabs" 
+              className={`px-4 py-1 rounded-full ${isActive('/community') ? 'text-orange-500 border border-orange-500' : 'text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500'}`}
+            >
+              Community
+            </Link>
+            {/* <Link 
+              href="/#faq"
+              onClick={handleFAQClick}
+              className={`px-4 py-1 rounded-full text-gray-600 hover:text-orange-500 hover:border hover:border-orange-500`}
+            >
+              FAQs
+            </Link> */}
+          </div>
         </div>
       </div>
 
-      <div className="hidden md:flex items-center gap-4 flex-shrink-0">
+      <div className="hidden md:flex items-center gap-4 flex-shrink-0 w-[200px] justify-end">
         {session ? (
           <div className="flex items-center gap-4">
             <span className="text-gray-600">Welcome, {session.user.name}</span>
@@ -152,9 +162,11 @@ export default function Nav() {
             <Link href="/login" className="text-gray-600">
               Login
             </Link>
-            <Button className="bg-orange-500 hover:bg-orange-600 rounded-full px-6 py-2">
-              Sign up free
-            </Button>
+            <Link href="/signup">
+              <Button className="bg-orange-500 hover:bg-orange-600 rounded-full px-6 py-2">
+                Sign up free
+              </Button>
+            </Link>
           </>
         )}
       </div>

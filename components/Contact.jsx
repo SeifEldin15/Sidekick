@@ -3,12 +3,33 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
+import { usePathname } from "next/navigation"
 
 export default function Contact() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.2
   })
+  const pathname = usePathname()
+
+  const isActive = (path) => pathname === path
+
+  const handleFAQClick = (e) => {
+    if (pathname === '/') {
+      e.preventDefault()
+      setTimeout(() => {
+        const faqSection = document.getElementById('faq')
+        if (faqSection) {
+          const navHeight = 80
+          const faqPosition = faqSection.getBoundingClientRect().top + window.pageYOffset - navHeight
+          window.scrollTo({
+            top: faqPosition,
+            behavior: 'smooth'
+          })
+        }
+      }, 100)
+    }
+  }
 
   return (
     <footer className="bg-black text-white px-12 py-16 rounded-t-3xl max-w-[96%] md:max-w-[92%] mx-auto mt-12">
@@ -24,12 +45,12 @@ export default function Contact() {
               transition={{ duration: 0.8 }}
               className="relative max-w-md"
             >
-              <Input
+              {/* <Input
                 type="email"
                 placeholder="Enter Your Email"
                 className="bg-transparent border-b border-t-0 border-x-0 rounded-none pl-0 text-white placeholder:text-white/70"
-              />
-              <Button
+              /> */}
+              {/* <Button
                 variant="ghost"
                 className="absolute right-0 top-1/2 -translate-y-1/2"
               >
@@ -43,7 +64,7 @@ export default function Contact() {
                 >
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
-              </Button>
+              </Button> */}
             </motion.div>
           </div>
           {/* Let's Talk Section */}
@@ -112,11 +133,47 @@ export default function Contact() {
           >
             <h3 className="text-lg font-semibold mb-4">Navigation</h3>
             <ul className="space-y-2">
-              <li><Link href="#" className="text-gray-400 hover:text-white">Service</Link></li>
-              <li><Link href="#" className="text-gray-400 hover:text-white">Agency</Link></li>
-              <li><Link href="#" className="text-gray-400 hover:text-white">Case Study</Link></li>
-              <li><Link href="#" className="text-gray-400 hover:text-white">Resource</Link></li>
-              <li><Link href="#" className="text-gray-400 hover:text-white">Contact</Link></li>
+              <li>
+                <Link 
+                  href="/services" 
+                  className={`text-gray-400 hover:text-white ${isActive('/services') ? 'text-white' : ''}`}
+                >
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/blog" 
+                  className={`text-gray-400 hover:text-white ${isActive('/blog') ? 'text-white' : ''}`}
+                >
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/case-study" 
+                  className={`text-gray-400 hover:text-white ${isActive('/case-study') ? 'text-white' : ''}`}
+                >
+                  Case Study
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="https://www.skool.com/startuplabs" 
+                  className="text-gray-400 hover:text-white"
+                >
+                  Community
+                </Link>
+              </li>
+              {/* <li>
+                <Link 
+                  href="/#faq"
+                  onClick={handleFAQClick}
+                  className="text-gray-400 hover:text-white"
+                >
+                  FAQs
+                </Link>
+              </li> */}
             </ul>
           </motion.div>
 
@@ -131,7 +188,7 @@ export default function Contact() {
             <ul className="space-y-2">
               <li><Link href="#" className="text-gray-400 hover:text-white">Privacy Policy</Link></li>
               <li><Link href="#" className="text-gray-400 hover:text-white">Copyright</Link></li>
-              <li><Link href="#" className="text-gray-400 hover:text-white">Email Address</Link></li>
+              {/* <li><Link href="#" className="text-gray-400 hover:text-white">Email Address</Link></li> */}
             </ul>
           </motion.div>
 
