@@ -31,14 +31,18 @@ export async function POST(request) {
       );
     }
 
-    const post = await Post.create({
+    // Add default excerpt if not provided
+    const postData = {
       ...data,
+      excerpt: data.excerpt || data.content.substring(0, 150) + '...', // Create excerpt from content
       createdAt: new Date(),
-    });
+    };
+
+    const post = await Post.create(postData);
     
     return NextResponse.json(post);
   } catch (error) {
-    console.error('Post creation error:', error); // Add logging
+    console.error('Post creation error:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

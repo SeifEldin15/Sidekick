@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import ImageUpload from '@/components/ImageUpload/ImageUpload';
 
 export default function NewPost() {
   const router = useRouter();
@@ -62,13 +63,10 @@ export default function NewPost() {
         </div>
 
         <div>
-          <label className="block mb-2">Image URL</label>
-          <input
-            type="text"
+          <label className="block mb-2">Image</label>
+          <ImageUpload
             value={formData.image}
-            onChange={(e) => setFormData({...formData, image: e.target.value})}
-            className="w-full p-2 border rounded"
-            required
+            onChange={(url) => setFormData({...formData, image: url})}
           />
         </div>
 
